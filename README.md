@@ -26,7 +26,6 @@ Always create a python3 venv and activate it before installing deps
 
 👤 **Priyanshu Sharma**
 
-* Website: http://aayaamlabs.com
 * Twitter: [@gokuney](https://twitter.com/gokuney)
 * Github: [@gokuney](https://github.com/gokuney)
 * LinkedIn: [@priyanshu-sharma-5135b3143](https://linkedin.com/in/priyanshu-sharma-5135b3143)
