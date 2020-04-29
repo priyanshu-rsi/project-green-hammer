@@ -1,4 +1,10 @@
 - educamConfig:
+    active: false
     ip: rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov
     password: ''
     username: ''
+- dummyUrls:
+    rtsp: rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov
+- webCamConfig:
+    active: false
+    camid: 1

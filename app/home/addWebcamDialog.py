@@ -1,11 +1,27 @@
-import cv2, time
+import cv2, time, os, subprocess, sys
+import gi
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk
 
 class WebcamDialog:
     def __init__(self, builder):
         self.builder = builder
         print("Inited AddWebcamDialog")
+        self.makeList()
 
-    # addEducamSpecific actions
+    def makeList(self):
+        print("Making list of available webcams")
+        webcamsList = self.builder.get_object("webcams_list")
+        cams = subprocess.check_output("ls /dev/  | grep video | awk '{print $0}'", shell=True).decode(sys.stdout.encoding)
+        camsList = cams.splitlines()
+        for cam in camsList:
+            _id = camsList.index(cam)
+            print("Adding camera ", cam, _id)
+            Gtk.ComboBoxText.append(webcamsList, str(_id), str(cam))
+        
+
+
+    # addWebcamSpecific actions
     def addWebcamCloseDialog(self, widget):
         self.builder.get_object("webcam_settings_dialog").hide()
 
@@ -14,8 +30,13 @@ class WebcamDialog:
         self.addWebcamCloseDialog(widget)
 
     def previewSource(self, camid):
+        
+        #get dropdown item
+        webcamsList = self.builder.get_object("webcams_list")
+        active_cam = webcamsList.get_active()
+        print("---- ACTIVE CAM ---- ", active_cam)
         cv2.namedWindow('Webcam-Preview', cv2.WINDOW_NORMAL)
-        cam = cv2.VideoCapture(3)
+        cam = cv2.VideoCapture( active_cam )
         FirstTime = True
         while True:
             ret_val, img = cam.read()

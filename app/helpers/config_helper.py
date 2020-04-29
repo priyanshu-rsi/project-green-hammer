@@ -19,14 +19,16 @@ class ConfigHelper:
         sendBack = False
         with open(r'userconfig.yml') as configFile:
             config = yaml.load(configFile, Loader=yaml.FullLoader)
+
+        if not key:
             sendBack = config
+            return sendBack
         if key:
             for index,item in enumerate(config):
                 for cKey in item:
                     if cKey == key: #Found the parent config key
                         sendBack = item[key]
-        print(sendBack)
-        return sendBack
+                        return sendBack
 
     def write(self, key, value): # Creates the key if it doesn't exists, update if it does
         config = self.read()
