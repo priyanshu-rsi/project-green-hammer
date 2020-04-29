@@ -2,7 +2,7 @@ import cv2, time, os, subprocess, sys
 import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
-
+ 
 class WebcamDialog:
     def __init__(self, builder):
         self.builder = builder

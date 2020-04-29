@@ -7,7 +7,7 @@
     rtsp: rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov
 - webCamConfig:
     active: false
-    camid: 1
+    camid: 1 
 - screenConfig:
     active: false
     screenid: 1

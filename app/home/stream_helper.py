@@ -32,7 +32,7 @@ class StreamHelper:
                     print("EDUCAM IS ACTIVE")
                     educamshare = "-i {ip}".format(ip=data["ip"])
 
-        data = self.Config.read("webCamConfig")
+        data = self.Config.read("webCamConfig") 
         if data:
             if len( str(data["camid"]) ) > 0:
                 if data["active"]:
@@ -43,7 +43,7 @@ class StreamHelper:
         if data:
             if len( str(data["screenid"]) ) > 0:
                 if data["active"]:
-                    print("SCREEN IS ACTIVE")
+                    print("SCREEN IS ACTIVE") 
                     educamshare = "-f x11grab -r 25 -s 1920x1080 -i :{id}".format(id=data["screenid"])
         
         _command = "scripts/ffmpeg/screen-webcam.sh '{screenshare}' '{educamshare}' '{comingsoonshare}' '{webcamshare}'".format(screenshare=screenshare, webcamshare=webcamshare, educamshare=educamshare, comingsoonshare=comingsoonshare)

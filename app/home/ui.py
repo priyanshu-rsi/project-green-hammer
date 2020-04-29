@@ -46,7 +46,7 @@ class UI:
         toggleEducamUsageBtn.connect("clicked", WebCamActions.toggleEducamUsage)
 
         # Toggle WEBCAM Usage
-        toggleWebcamUsageBtn = builder.get_object("webcam_source_state")
+        toggleWebcamUsageBtn = builder.get_object("webcam_source_state") 
         toggleWebcamUsageBtn.connect("clicked", WebCamActions.toggleWebcamUsage)
 
         # Toggle SCREEN Usage

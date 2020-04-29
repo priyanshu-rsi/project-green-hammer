@@ -73,7 +73,7 @@ class WebCamActions:
         data = self.Config.read("screenConfig")
         if widget.get_active() == True:
             if data:
-                if len( str(data["screenid"]).strip() ) == 0:
+                if len( str(data["screenid"]).strip() ) == 0: 
                     self.dialoghelper.alert("Error!", "No screen selected.  \n Please click on 'Configure' button to select a screen to share")
                     widget.set_active(False)
                 else:

@@ -15,7 +15,7 @@ class WebCamHelper:
         print("Inited webcamhelper")
 
     def startWebCam(self):
-        print("starting webcam")
+        print("starting webcam")  
         # process = subprocess.Popen(['./scripts/startWebcam.sh'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         script_dir = os.path.realpath(os.path.dirname(sys.argv[0]))
         script=os.path.join(script_dir, "scripts/startWebcam.sh")

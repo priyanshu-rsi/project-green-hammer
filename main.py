@@ -7,7 +7,7 @@ if euid != 0:
 
 from app.home import Landing
 
-from app.preview import preview
+from app.preview import preview 
 
 
 

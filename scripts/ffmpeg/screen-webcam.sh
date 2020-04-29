@@ -4,7 +4,7 @@ echo "ffmpeg -stream_loop -1  $1  $2  $3  $4 -filter_complex"
 echo "===="
 ffmpeg -stream_loop -1  $1  $2  $3  $4 -filter_complex \
     "
-		nullsrc=size=1920x1080 [base];
+		nullsrc=size=1920x1080 [base]; 
 		[0:v] setpts=PTS-STARTPTS, scale=960x540 [upperleft];
 		[1:v] setpts=PTS-STARTPTS, scale=960x540 [upperright];
 		[2:v] setpts=PTS-STARTPTS, scale=960x540 [lowerleft];
