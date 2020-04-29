@@ -1,5 +1,6 @@
 import gi
 import app.home.addEducamDialog as addEducamDialog
+import app.home.addWebcamDialog as addWebcamDialog
 import app.home.webcam_actions as webcamactions
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
@@ -19,15 +20,21 @@ class UI:
         builder.add_from_file("viewpath.glade")
 
         window = builder.get_object("homeWindow")
+        window.connect("destroy", Gtk.main_quit)
         window.show_all()
 
         # ==== Actions
         educamDialog = addEducamDialog.EducamDialog(builder)
+        webcamDialog = addWebcamDialog.WebcamDialog(builder)
         WebCamActions = webcamactions.WebCamActions(builder)
 
-        # EDUCAM360 button bind
+        # ADD EDUCAM360 button bind
         addEduCamBtn = builder.get_object("add_educam_btn")
         addEduCamBtn.connect("clicked", educamDialog.addEducam)
+
+        # ADD WEBCAM button bind
+        addWebCamBtn = builder.get_object("add_webcam_btn")
+        addWebCamBtn.connect("clicked", webcamDialog.addWebcam)
 
         # Webcam button bind
         startStopStreamBtn = builder.get_object("start_stop_webcam")
