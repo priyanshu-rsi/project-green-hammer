@@ -1,4 +1,11 @@
+import os,sys
+print("Current Working Directory " , os.getcwd())
+euid = os.geteuid() 
+if euid != 0:
+  raise EnvironmentError("Please run the application as a root/administrator")
+  exit()
 import subprocess
+from subprocess import check_call
 import app.home.stream_helper as SH
 
 class WebCamHelper: 
@@ -9,7 +16,10 @@ class WebCamHelper:
 
     def startWebCam(self):
         print("starting webcam")
-        process = subprocess.Popen(['./scripts/startWebcam.sh'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        # process = subprocess.Popen(['./scripts/startWebcam.sh'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        script_dir = os.path.realpath(os.path.dirname(sys.argv[0]))
+        script=os.path.join(script_dir, "scripts/startWebcam.sh")
+        process = subprocess.Popen([script], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         process.wait() # Wait for process to complete.
         for line in process.stdout.readlines():
             print(line)

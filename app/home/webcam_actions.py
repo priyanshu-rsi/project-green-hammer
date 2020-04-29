@@ -73,19 +73,19 @@ class WebCamActions:
         data = self.Config.read("screenConfig")
         if widget.get_active() == True:
             if data:
-                if len(data["screenid"].strip()) == 0:
+                if len( str(data["screenid"]).strip() ) == 0:
                     self.dialoghelper.alert("Error!", "No screen selected.  \n Please click on 'Configure' button to select a screen to share")
                     widget.set_active(False)
                 else:
                     data["active"] = True
-                    self.Config.write("webCamConfig", data)
+                    self.Config.write("screenConfig", data)
             else:
                 self.dialoghelper.alert("Error!", "Screen Sharing endpoint is not configured yet. \n Please click on 'Configure' button to add a webcam")
                 widget.set_active(False)
         else:
             if data:
                     data["active"] = False
-                    self.Config.write("webCamConfig", data)
+                    self.Config.write("screenConfig", data)
 
     
     ## Trigger Buttons (Footer) ##
@@ -113,11 +113,13 @@ class WebCamActions:
             self.StreamState = False
         else:
             print("Toggeling stream:ON")
+            widget.set_label(self.stopStream)
+            self.StreamState = True
 
             if not self.WebCamState:
                 self.dialoghelper.alert("Error in starting stream", "VIEWpath is not running. Please click on 'Start Webcam' first and try again")
+                widget.set_label(self.startStream)
+                self.StreamState = False
                 return False
 
             self.webcamhelper.startStream()
-            widget.set_label(self.stopStream)
-            self.StreamState = True
